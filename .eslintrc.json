@@ -1,3 +1,53 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": [
+    "prettier",
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "next/core-web-vitals"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "ignorePatterns": ["node_modules/"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "comma-dangle": ["warn", "always-multiline"],
+    "prettier/prettier": [
+      "error", 
+      {
+        "indent": 4,
+        "singleQuote": true,
+        "printWidth": 100,
+        "semi": false,
+        "endOfLine": "auto"
+      }
+    ],
+    "quotes": ["warn", "single"],
+    "semi": ["warn", "never"],
+    "no-var": "warn",
+    "no-multi-spaces": "warn",
+    "space-in-parens": "warn",
+    "no-multiple-empty-lines": "warn",
+    "prefer-const": "warn",
+    "no-use-before-define": "off",
+    "prefer-arrow-callback": "warn",
+    "eol-last": "warn",
+    "react/react-in-jsx-scope": 0,
+    "@typescript-eslint/no-explicit-any": 0,
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "react/prop-types": "warn",
+    "react/display-name": 0
+  }
 }

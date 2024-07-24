@@ -1,10 +1,10 @@
-import { Main } from '@/widgets/main'
+import { Skills } from '@/widgets/skills'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Home',
+  title: 'Skills',
 }
 
 export default function Page() {
-  return <Main />
+  return <Skills />
 }

@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Cuprum:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+:root {
+  --blue-black: linear-gradient(to top, #09203f 0%, #537895 100%);
+  --blue-green: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+  --brown-orange: linear-gradient(62deg, #FBAB7E 0%, #F7CE68 100%);
+  --pink-purple: linear-gradient(160deg, #f07ae4 0%, #B721FF 100%);
+  --orange-red: linear-gradient(62deg, #f5a236 0%, #ef5628 100%);
+}
+
+.main-bg {
+  background-image: var(--blue-black);
+}
+
+.bg-blue-green {
+  background-image: var(--blue-green);
+}
+
+.bg-brown-orange {
+  background-image: var(--brown-orange);
+}
+
+.bg-pink-purple {
+  background-image: var(--pink-purple);
+}
+
+.bg-orange-red {
+  background-image: var(--orange-red);
+}
+
+.tilt-3d {
+  transition: all 0.5s ease-out;
+  transform: rotate3d(0, 0, 0, 0);
+}
+
+$tilt-parts: 3;
+
+.tilt-part {
+  position: absolute;
+  z-index: 1;
+  width: 100% / $tilt-parts;
+  height: 100% / $tilt-parts;
+} 
+
+@function getRotatePosition($i) {
+  @if $i == 1 {
+    @return 1;
+  } @else if $i == 2 {
+    @return 0;
+  } @else {
+    @return -1;
+  }
+}
+
+@for $i from 1 through $tilt-parts {
+  @for $j from 1 through $tilt-parts {
+    .tilt-part:nth-child(#{$i * $tilt-parts - $tilt-parts + $j}) {
+      left: #{($j - 1) * (100% / $tilt-parts)};
+      top: #{($i - 1) * (100% / $tilt-parts)};
+      $rotation: 20deg;
+      $a: getRotatePosition($i);
+      $b: getRotatePosition($j);
+      &:hover ~ .tilt-3d {
+        transform: rotate3d($a, $b, 0, $rotation);
+      }
+    }
+  }
+}
+
