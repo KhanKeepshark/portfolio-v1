@@ -8,13 +8,13 @@ export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, c
   const isInView = useInView(container, { once: true, amount: 1 })
 
   return (
-    <motion.div ref={container} className="h-[calc(100vh-84px)] flex flex-col justify-center">
+    <motion.div ref={container} className=" flex flex-col justify-center">
       <motion.div
         initial={{
           height: 240,
         }}
         animate={{
-          height: isInView ? 648 : 240,
+          height: isInView ? '100%' : 240,
         }}
         viewport={{ amount: 1, once: true }}
         className="w-full bg-white rounded-lg overflow-hidden shadow-2xl"
@@ -37,11 +37,11 @@ export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, c
             },
           }}
           viewport={{ once: true, amount: 1 }}
-          className="p-6 flex flex-col justify-between h-[calc(100%-240px)] !font-monserat"
+          className="p-6 flex flex-col justify-between !font-monserat"
         >
           <div>
             <h1 className="text-xl min-[360px]:text-3xl">{title}</h1>
-            <p className="mt-4 font-light max-h-[240px] text-ellipsi overflow-hidden text-sm min-[360px]:text-lg">
+            <p className="mt-4 font-light text-ellipsi overflow-hidden text-sm min-[360px]:text-lg">
               {description}
             </p>
           </div>
