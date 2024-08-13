@@ -4,8 +4,9 @@ import { motion, useInView } from 'framer-motion'
 import Image from 'next/image'
 
 export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, company }) => {
-  const container = useRef(null)
+  const container = useRef<HTMLDivElement>(null)
   const isInView = useInView(container, { once: true, amount: 1 })
+
   return (
     <motion.div ref={container} className="h-[calc(100vh-84px)] flex flex-col justify-center">
       <motion.div
@@ -36,14 +37,20 @@ export const ProjectCard: FC<ProjectCardProps> = ({ title, description, image, c
             },
           }}
           viewport={{ once: true, amount: 1 }}
-          className="p-6 flex flex-col !font-monserat"
+          className="p-6 flex flex-col justify-between h-[calc(100%-240px)] !font-monserat"
         >
-          <h1 className="text-3xl">{title}</h1>
-          <p className="mt-4 font-light max-h-[240px] h-[240px] text-ellipsi overflow-hidden text-lg">
-            {description}
-          </p>
-          <div className="h-0.5 my-5 w-full bg-gray-300" />
-          <p className="text-lg">{company ? `Company: ${company}` : 'Own Project'}</p>
+          <div>
+            <h1 className="text-xl min-[360px]:text-3xl">{title}</h1>
+            <p className="mt-4 font-light max-h-[240px] text-ellipsi overflow-hidden text-sm min-[360px]:text-lg">
+              {description}
+            </p>
+          </div>
+          <div>
+            <div className="h-0.5 my-2 sm:my-5 w-full bg-gray-300" />
+            <p className="text-sm min-[360px]:text-lg">
+              {company ? `Company: ${company}` : 'Own Project'}
+            </p>
+          </div>
         </motion.div>
       </motion.div>
     </motion.div>

@@ -6,7 +6,7 @@ import { motion } from 'framer-motion'
 
 export const Projects = () => {
   return (
-    <motion.div className="bg-slate-300 p-8 flex flex-col gap-10">
+    <motion.div className="bg-slate-300 p-4 sm:p-8 flex flex-col gap-10">
       {PROJECTS_LIST.map((project, index) => (
         <ProjectCard
           key={index}
